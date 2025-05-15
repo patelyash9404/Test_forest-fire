@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forest Fire Risk Predictor | Input Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    .container {
+      background: rgba(15, 15, 15, 0.65);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 2.5rem 3rem;
+      max-width: 650px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      font-weight: 700;
+      text-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.85),
+        0 0 5px rgba(0, 0, 0, 0.7);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    input {
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-weight: 500;
+      color: #222;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input:focus {
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+    }
+
+    button {
+      margin-top: 2rem;
+      background: rgba(0, 123, 255, 0.95);
+      border: none;
+      border-radius: 12px;
+      padding: 0.85rem 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 123, 255, 0.8);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(0, 123, 255, 1);
+      box-shadow: 0 8px 24px rgba(0, 123, 255, 1);
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" tabindex="0">
+    <h1>🌲 Forest Fire Risk Predictor</h1>
+    <form method="POST" action="/predictdata">
+      <label for="Temperature">Temperature (°C)</label>
+      <input type="number" id="Temperature" name="Temperature" step="0.1" required />
+
+      <label for="RH">Relative Humidity (%)</label>
+      <input type="number" id="RH" name="RH" step="0.1" required />
+
+      <label for="Ws">Wind Speed (km/h)</label>
+      <input type="number" id="Ws" name="Ws" step="0.1" required />
+
+      <label for="Rain">Rain (mm)</label>
+      <input type="number" id="Rain" name="Rain" step="0.01" required />
+
+      <label for="FFMC">FFMC (Fine Fuel Moisture Code)</label>
+      <input type="number" id="FFMC" name="FFMC" step="0.1" required />
+
+      <label for="DMC">DMC (Duff Moisture Code)</label>
+      <input type="number" id="DMC" name="DMC" step="0.1" required />
+
+
+
+      <label for="ISI">ISI (Initial Spread Index)</label>
+      <input type="number" id="ISI" name="ISI" step="0.1" required />
+
+
+    <label for="Classes">Classes</label>
+    <select id="Classes" name="Classes" required>
+     <option value="" disabled selected>Select class</option>
+        <option value="fire">fire</option>
+        <option value="not fire">not fire</option>
+    </select>
+
+    <label for="region">Region (Area 0 is define for Algerian and 1 for Sidi-Bel Abbes Region)</label>
+    <select id="region" name="region" required>
+        <option value="" disabled selected>Select region</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+    </select>
+
+     
+
+      <button type="submit">Predict Fire Risk</button>
+    </form>
+  </div>
+</body>
+</html>
